@@ -2,8 +2,8 @@ import  SwiftUI
 
 class ViewModel: ObservableObject {
     @Published var board: [[Block]]
-    var numRows: Int
     var numCols: Int
+    var numRows: Int
     
     init(numRows: Int, numColumns: Int) {
         self.numRows = numRows
@@ -11,7 +11,7 @@ class ViewModel: ObservableObject {
         board = Array(repeating: Array(repeating: Block(color: Color.black), count: numRows), count: numColumns)
     }
     
-    //color the block with the given color
+    //color block at given location with given color
     func drawBlock(col: Int, row: Int, color: Color) {
         board[col][row].color = color
     }

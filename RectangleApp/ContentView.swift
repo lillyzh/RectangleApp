@@ -3,18 +3,18 @@ import RectangleKit
 
 struct ContentView: View {
     @ObservedObject var viewModel = ViewModel(numRows: 50, numColumns: 50)
+    @State var numVerticalBars: String = ""
+    @State var maxVertHeight: String = ""
+    @State var validMaxHeight = true
+    @State var validNumBars = true
+    @State var verticalBars = [VerticalRectangle]()
     var defaultNumVerticalBars = 0
     var defaultMaxVertHeight = 0
     var defaultMaxVertWidth = 5 //max width of a vertical rectangle
     var rectangleKit = RectangleKit()
-    @State var validMaxHeight = true
-    @State var validNumBars = true
-    @State var numVerticalBars: String = ""
-    @State var maxVertHeight: String = ""
-    @State var verticalBars = [VerticalRectangle]()
     
     var body: some View {
-        Text("Rectangle Kit App")
+        Text("Rectangle App")
             .font(.title)
             .padding()
         configurationView()
@@ -26,18 +26,16 @@ struct ContentView: View {
     func configurationView() -> AnyView {
         return AnyView(
             VStack(alignment: .leading, spacing: 10) {
-                //since the number of columns is fixed at 50 and each column can be as wide as 5, this program can accommodate at most 10 vertical bars
+                //since the number of columns is fixed at 50 and each column can be as wide as 5, the number of vertical bars can be at most 10
                 Text("Enter number of vertical bars between 0 and 10")
-                    .bold()
                 TextField("Try 10", text: $numVerticalBars)
                     .padding()
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
                     .onChange(of: numVerticalBars) { newValue in
                         validNumBars = ((Int(newValue) ?? -1) >= 0 && (Int(newValue) ?? -1 ) <= (viewModel.numCols / defaultMaxVertWidth))
                     }
-                //since the number of rows is fixed at 50, the height of a vertical bar can be at most 50
+                //since the number of rows is fixed at 50, the maximum height of a vertical bar can be at most 50
                 Text("Enter maximum vertical height between 0 and 50")
-                    .bold()
                 TextField("Try 50", text: $maxVertHeight)
                     .padding()
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
