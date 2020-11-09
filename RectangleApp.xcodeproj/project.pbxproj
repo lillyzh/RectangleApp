@@ -3,16 +3,19 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B56B65B425593CDD0092A0DF /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B65B325593CDD0092A0DF /* ViewModel.swift */; };
+		B56B65B925593CF80092A0DF /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B56B65B825593CF80092A0DF /* BoardView.swift */; };
 		B57BEB65255687FB00EE0C62 /* RectangleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB64255687FB00EE0C62 /* RectangleAppApp.swift */; };
 		B57BEB67255687FB00EE0C62 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB66255687FB00EE0C62 /* ContentView.swift */; };
 		B57BEB69255687FE00EE0C62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57BEB68255687FE00EE0C62 /* Assets.xcassets */; };
 		B57BEB6C255687FE00EE0C62 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57BEB6B255687FE00EE0C62 /* Preview Assets.xcassets */; };
 		B57BEB77255687FE00EE0C62 /* RectangleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB76255687FE00EE0C62 /* RectangleAppTests.swift */; };
 		B57BEB82255687FE00EE0C62 /* RectangleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57BEB81255687FE00EE0C62 /* RectangleAppUITests.swift */; };
+		B57BEB942556954F00EE0C62 /* RectangleKit in Frameworks */ = {isa = PBXBuildFile; productRef = B57BEB932556954F00EE0C62 /* RectangleKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B56B65B325593CDD0092A0DF /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		B56B65B825593CF80092A0DF /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
 		B57BEB61255687FB00EE0C62 /* RectangleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RectangleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57BEB64255687FB00EE0C62 /* RectangleAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleAppApp.swift; sourceTree = "<group>"; };
 		B57BEB66255687FB00EE0C62 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B57BEB942556954F00EE0C62 /* RectangleKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +103,8 @@
 			children = (
 				B57BEB64255687FB00EE0C62 /* RectangleAppApp.swift */,
 				B57BEB66255687FB00EE0C62 /* ContentView.swift */,
+				B56B65B325593CDD0092A0DF /* ViewModel.swift */,
+				B56B65B825593CF80092A0DF /* BoardView.swift */,
 				B57BEB68255687FE00EE0C62 /* Assets.xcassets */,
 				B57BEB6D255687FE00EE0C62 /* Info.plist */,
 				B57BEB6A255687FE00EE0C62 /* Preview Content */,
@@ -146,6 +154,9 @@
 			dependencies = (
 			);
 			name = RectangleApp;
+			packageProductDependencies = (
+				B57BEB932556954F00EE0C62 /* RectangleKit */,
+			);
 			productName = RectangleApp;
 			productReference = B57BEB61255687FB00EE0C62 /* RectangleApp.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +228,9 @@
 				Base,
 			);
 			mainGroup = B57BEB58255687FB00EE0C62;
+			packageReferences = (
+				B57BEB922556954F00EE0C62 /* XCRemoteSwiftPackageReference "RectangleKit" */,
+			);
 			productRefGroup = B57BEB62255687FB00EE0C62 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -260,6 +274,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B57BEB67255687FB00EE0C62 /* ContentView.swift in Sources */,
+				B56B65B925593CF80092A0DF /* BoardView.swift in Sources */,
+				B56B65B425593CDD0092A0DF /* ViewModel.swift in Sources */,
 				B57BEB65255687FB00EE0C62 /* RectangleAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -580,6 +596,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B57BEB922556954F00EE0C62 /* XCRemoteSwiftPackageReference "RectangleKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lillyzh/RectangleKit.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B57BEB932556954F00EE0C62 /* RectangleKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B57BEB922556954F00EE0C62 /* XCRemoteSwiftPackageReference "RectangleKit" */;
+			productName = RectangleKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B57BEB59255687FB00EE0C62 /* Project object */;
 }

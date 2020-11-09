@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "RectangleKit",
+        "repositoryURL": "https://github.com/lillyzh/RectangleKit.git",
+        "state": {
+          "branch": "main",
+          "revision": "6c694777fd1375258304647a86f19c9562be0be7",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
