@@ -7,7 +7,8 @@ struct ContentView: View {
     var defaultMaxVertHeight = 0
     var defaultMaxVertWidth = 5 //max width of a vertical rectangle
     var rectangleKit = RectangleKit()
-    @State var showButtons = true
+    @State var validMaxHeight = true
+    @State var validNumBars = true
     @State var numVerticalBars: String = ""
     @State var maxVertHeight: String = ""
     @State var verticalBars = [VerticalRectangle]()
@@ -17,11 +18,8 @@ struct ContentView: View {
             .font(.title)
             .padding()
         configurationView()
-        Text("Note: The two buttons below will disappear if invalid inputs are entered.")
         BoardView(viewModel: viewModel)
-        if showButtons {
-            buttonsView()
-        }
+        buttonsView()
     }
     
     //create a view that contains the two text fields for number of vertical bars and maximum vertical height
@@ -35,7 +33,7 @@ struct ContentView: View {
                     .padding()
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
                     .onChange(of: numVerticalBars) { newValue in
-                        showButtons = ((Int(newValue) ?? -1) >= 0 && (Int(newValue) ?? -1 ) <= (viewModel.numCols / defaultMaxVertWidth))
+                        validNumBars = ((Int(newValue) ?? -1) >= 0 && (Int(newValue) ?? -1 ) <= (viewModel.numCols / defaultMaxVertWidth))
                     }
                 //since the number of rows is fixed at 50, the height of a vertical bar can be at most 50
                 Text("Enter maximum vertical height between 0 and 50")
@@ -44,7 +42,7 @@ struct ContentView: View {
                     .padding()
                     .overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
                     .onChange(of: maxVertHeight) { newValue in
-                        showButtons = (Int(newValue) ?? -1) >= 0 && (Int(newValue) ?? -1 ) <= (viewModel.numRows)
+                        validMaxHeight = (Int(newValue) ?? -1) >= 0 && (Int(newValue) ?? -1 ) <= (viewModel.numRows)
                     }
             }
         )
@@ -62,10 +60,11 @@ struct ContentView: View {
                     Text("Generate Input")
                         .foregroundColor(.white)
                         .padding(.all)
-                        .background(Color.blue)
+                        .background((validNumBars && validMaxHeight) ? Color.blue : Color.gray.opacity(0.4))
                         .cornerRadius(16)
                         .font(.body)
                 }
+                .disabled(!(validNumBars && validMaxHeight))
                 Button(action: {
                     let horizontalBars = rectangleKit.findHorizontalBars(input: verticalBars)
                     drawOutputGraph(horizontalRects: horizontalBars)
@@ -73,10 +72,11 @@ struct ContentView: View {
                     Text("Compute Output")
                         .foregroundColor(.white)
                         .padding(.all)
-                        .background(Color.green)
+                        .background((validNumBars && validMaxHeight) ? Color.green : Color.gray.opacity(0.4))
                         .cornerRadius(16)
                         .font(.body)
                 }
+                .disabled(!(validNumBars && validMaxHeight))
             }
         )
     }
