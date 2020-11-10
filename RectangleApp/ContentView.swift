@@ -64,8 +64,10 @@ struct ContentView: View {
                 }
                 .disabled(!(validNumBars && validMaxHeight))
                 Button(action: {
-                    let horizontalBars = rectangleKit.findHorizontalBars(input: verticalBars)
-                    drawOutputGraph(horizontalRects: horizontalBars)
+                    if !verticalBars.isEmpty {
+                        let horizontalBars = rectangleKit.findHorizontalBars(input: verticalBars)
+                        drawOutputGraph(horizontalRects: horizontalBars)
+                    }
                 }) {
                     Text("Compute Output")
                         .foregroundColor(.white)
