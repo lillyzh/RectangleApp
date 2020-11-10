@@ -116,7 +116,7 @@ struct ContentView: View {
     func drawOutputGraph(horizontalRects: [HorizontalRectangle]) {
         for rec in horizontalRects {
             let color = Color(red: Double.random(), green: Double.random(), blue: Double.random())
-            for coor in rec.coordinates {
+            for coor in rec.baseCoordinates {
                 for i in 0..<rec.height {
                     viewModel.drawBlock(col: coor.x, row: coor.y + i, color: color)
                 }
